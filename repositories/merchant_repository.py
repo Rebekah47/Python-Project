@@ -11,3 +11,40 @@ def save_merchant(merchant):
     results = run_sql(sql, values)
     id = results[0]['id']
     merchant.id = id
+
+# SELECT ALL
+
+def select_all_merchants():
+    merchants_selected = []
+    sql = 'SELECT * FROM merchants'
+    results = run_sql(sql)
+    for result in results:
+        merchant = Merchant(result['name'], result['locaiton'])
+        merchants_selected.append(merchant)
+    return merchants_selected
+
+# SELECT
+def select_one_merchant(id):
+    sql = 'SELECT * FROM merchants WHERE id = %s'
+    values = [id]
+    results = run_sql(sql, values)[0]
+    merchant = Merchant(results['name'],results['locaiton'], results['id'])
+    return merchant
+
+# DELETE ALL
+def delete_all_merchants():
+    sql = 'DELETE FROM merchants'
+    run_sql(sql)
+
+# DELETE
+def delete_one_merchant(id):
+    sql = 'DELETE FROM merchants WHERE id = %s'
+    values = [id]
+    run_sql(sql, values)
+
+# UPDATE
+
+def update_account(merchant):
+    sql = 'UPDATE merchants SET (name, location) = (%s, %s) WHERE id = %s'
+    values =  [merchant.name, merchant.location, merchant.id]
+    run_sql(sql, values)
