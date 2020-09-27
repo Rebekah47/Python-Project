@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<main>
+    {% for account in accounts %}
+        Account User: {{ account.user_name }} <br>
+        Account Balance: {{ account.balance }} <br>
+        Account Transactions: <a href="/transactions">transaction summary</a>
+
+    {% endfor %}
+</main>
+{% endblock %}

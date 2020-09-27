@@ -1,13 +1,13 @@
 from flask import Blueprint, Flask, render_template, request, redirect
-from models.account import Account
+from models.tag import Tag
 import repositories.account_repository as account_repository
 import repositories.merchant_repository as merchant_repository
 import repositories.transaction_repository as transaction_repository
 import repositories.tag_repository as tag_repository
 
-account_blueprint = Blueprint("account", __name__)
-# account home
-@account_blueprint.route("/account")
-def account():
-    accounts = account_repository.select_all_account()
-    return render_template("account/account_home.html", accounts=accounts)
+tag_blueprint = Blueprint("tags", __name__)
+
+@tag_blueprint.route("/tags")
+def tags():
+    tags = tag_repository.select_all_tag()
+    return render_template("tags/tag_home.html", tags=tags)

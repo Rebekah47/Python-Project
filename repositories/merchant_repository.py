@@ -2,8 +2,11 @@ from db.run_sql import run_sql
 from models.account import Account
 from models.merchant import Merchant
 from models.transaction import Transaction
+from models.tag import Tag
+from models.transaction import Transaction
 import repositories.account_repository as account_repository
 import repositories.transaction_repository as transaction_repository
+import repositories.tag_repository as tag_repository
 
 def save_merchant(merchant):
     sql = "INSERT INTO merchants (name, location) VALUES (%s, %s) RETURNING id"
@@ -19,7 +22,7 @@ def select_all_merchants():
     sql = 'SELECT * FROM merchants'
     results = run_sql(sql)
     for result in results:
-        merchant = Merchant(result['name'], result['locaiton'])
+        merchant = Merchant(result['name'], result['location'])
         merchants_selected.append(merchant)
     return merchants_selected
 
@@ -28,7 +31,7 @@ def select_one_merchant(id):
     sql = 'SELECT * FROM merchants WHERE id = %s'
     values = [id]
     results = run_sql(sql, values)[0]
-    merchant = Merchant(results['name'],results['locaiton'], results['id'])
+    merchant = Merchant(results['name'],results['location'], results['id'])
     return merchant
 
 # DELETE ALL

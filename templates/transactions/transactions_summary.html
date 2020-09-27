@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<main>
+    <h2>Transaction List:</h2>
+    {% for transaction in transactions %}
+    
+    Amount: £{{ transaction.amount }} <br>
+    Date:{{ transaction.date }} <br> <br>
+
+    {% endfor %}
+
+    <section>
+        <form action="/add_new_transaction" method="POST">
+        <label for="account_id">Account Holder</label>
+        <select name="account_id" id="account_id">
+        </form>
+    </section>
+</main>
+{% endblock %}

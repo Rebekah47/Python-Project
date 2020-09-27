@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<main>
+    <h2>Current Merchants Available</h2>
+    {% for merchant in merchants %}
+        Merchant Name: {{ merchant.name }}, {{ merchant.location }} <br>
+
+    {% endfor %}
+
+    <h2>Add New Merchant</h2>
+        <section>
+            <form action="/add_new_merchant" method='POST'>
+
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name"> <br>
+                <label for="location">Location:</label>
+                <input type="location" name="location" id="location"> <br>
+                <input type="submit" value="Add New Merchant">
+                
+            </form>
+        </section>
+
+{% endblock %}
