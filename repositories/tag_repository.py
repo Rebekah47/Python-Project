@@ -21,7 +21,7 @@ def select_all_tag():
     sql = 'SELECT * FROM tags'
     results = run_sql(sql)
     for result in results:
-        tag = Tag(result['tag_name'])
+        tag = Tag(result['tag_name'], result["id"])
         tag_selected.append(tag)
     return tag_selected
 

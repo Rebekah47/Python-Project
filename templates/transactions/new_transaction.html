@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+        
+   
+    <section>
+
+        <form action="/add_new_transaction" method="POST">
+        <label for="account_name">Account Holder:</label>
+        <select name="account_name" id="account_name">
+            <optgroup label="Account Holder">
+                {% for account in accounts %}
+                <option value="{{ account.id }}">
+                    {{ account.user_name }}
+                </option>
+                {% endfor %}
+            </optgroup> <br>
+        </select>
+        <label for="merchant_name">Merchant:</label>
+        <select name="merchant_name" id="merchant_name">
+            <optgroup label="Merchants">
+                {% for merchant in merchants %}
+                <option value="{{ merchant.id }}">
+                    {{ merchant.name }}
+                </option>
+                {% endfor %}
+            </optgroup> <br>
+        </select>
+        <label for="amount">Transaction Amount:</label>
+        <input type="float" id="amount" name="amount">
+        <label for="date">Transaction Date:</label>
+        <input type="date" id="date" name="date">
+        <label for="tag">Tag:</label>
+        <select name="tag" id="tag">
+            <optgroup label="Tags">
+                {% for tag in tags %}
+                <option value="{{ tag.id }}">
+                    {{ tag.name }}
+                </option>
+                {% endfor %}
+            </optgroup> <br>
+        </select>
+        <input type="submit" value="Add New Transaction">
+        </form>
+    </section>
+
+{% endblock %}

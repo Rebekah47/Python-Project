@@ -22,7 +22,7 @@ def select_all_merchants():
     sql = 'SELECT * FROM merchants'
     results = run_sql(sql)
     for result in results:
-        merchant = Merchant(result['name'], result['location'])
+        merchant = Merchant(result['name'], result['location'], result['id'])
         merchants_selected.append(merchant)
     return merchants_selected
 

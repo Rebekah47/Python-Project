@@ -11,3 +11,11 @@ account_blueprint = Blueprint("account", __name__)
 def account():
     accounts = account_repository.select_all_account()
     return render_template("account/account_home.html", accounts=accounts)
+
+@account_blueprint.route("/full_statment", methods=['POST']) 
+def check_password():
+    password = request.form["password"]
+    if password == "hello":
+        return render_template("account/full_statment.html")
+    else:
+        return render_template("account/password_not_a_match.html")

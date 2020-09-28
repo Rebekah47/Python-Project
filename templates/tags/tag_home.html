@@ -8,6 +8,13 @@
     {{ tag.tag_name}} <br>
 
     {% endfor %}
+    <section>
+        <form action="/add_new_tag" method="POST">
+            <label for="new_tag">Tag Name:</label>
+            <input type="text" id="new_tag" name="new_tag">
+            <input type="submit" value="Add New Tag">
+        </form>
+    </section>
 </main>
 
 {% endblock %}

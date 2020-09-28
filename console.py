@@ -31,7 +31,7 @@ tag_repository.save_tag(tag_3)
 
 transaction_1 = Transaction(account_1, merchant_1, 14.95, "25/01/2020", tag_1)
 transaction_repository.save_transaction(transaction_1)
-transaction_2 = Transaction(account_1, merchant_2, 22.50, "27,01,2020", tag_2)
+transaction_2 = Transaction(account_1, merchant_2, 22.50, "27/01/2020", tag_2)
 transaction_repository.save_transaction(transaction_2)
 transaction_3 = Transaction(account_1, merchant_3, 120, "30/01/2020", tag_3)
 transaction_repository.save_transaction(transaction_3)

@@ -8,12 +8,8 @@
     Date:{{ transaction.date }} <br> <br>
 
     {% endfor %}
-
-    <section>
-        <form action="/add_new_transaction" method="POST">
-        <label for="account_id">Account Holder</label>
-        <select name="account_id" id="account_id">
-        </form>
-    </section>
+    <br>
+    <a href="/add_new_transaction">Add New Transaction</a>
+    <a href="/edit_transaction">Edit Transaction</a>
 </main>
 {% endblock %}
