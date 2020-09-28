@@ -9,7 +9,7 @@ import repositories.tag_repository as tag_repository
 
 def save_transaction(transaction):
     sql = "INSERT INTO transactions (account_id, merchant_id, amount, date, tag_id) VALUES (%s, %s, %s, %s, %s) RETURNING id"
-    values = [transaction.account_id.id, transaction.merchant_id.id, transaction.amount, transaction.date, transaction.tag_id.id]
+    values = [transaction.account.id, transaction.merchant.id, transaction.amount, transaction.date, transaction.tag.id]
     results = run_sql(sql, values)
     id = results[0]['id']
     transaction.id = id
@@ -23,20 +23,20 @@ def select_all_transactions():
         account = account_repository.select_one_account(result["account_id"])
         merchant = merchant_repository.select_one_merchant(result["merchant_id"])
         tag = tag_repository.select_one_tag(result["tag_id"])
-        transaction = Transaction(account, merchant, result['amount'], result['date'], tag)
+        transaction = Transaction(account, merchant, result['amount'], result['date'], tag, result['id'])
         transactions.append(transaction)
     return transactions
 
 # SELECT
 
 def select_one_transaction(id):
-    sql = "SELECT * FROM transaction WHERE id = %s"
+    sql = "SELECT * FROM transactions WHERE id = %s"
     values = [id]
-    result = run_sql(sql, values)
+    result = run_sql(sql, values)[0]
     account = account_repository.select_one_account(result["account_id"])
     merchant = merchant_repository.select_one_merchant(result["merchant_id"])
     tag = tag_repository.select_one_tag(result["tag_id"])
-    transaction = Transaction(account, merchant, result['amount'], result['date'], tag)
+    transaction = Transaction(account, merchant, result['amount'], result['date'], tag, result['id'])
     return transaction
 
 # DELETE ALL
@@ -53,7 +53,7 @@ def delete_one_transaction(id):
 # UPDATE
 def update_transaction(transaction):
     sql = "UPDATE transactions SET (account_id, merchant_id, amount, date, tag_id) = (%s, %s, %s, %s, %s) WHERE id = %s"
-    values = [transaction.account_id.id, transaction.merchant_id.id, transaction.amount, transaction.date, transaction.tag, transaction.tag_id.id]
+    values = [transaction.account.id, transaction.merchant.id, transaction.amount, transaction.date, transaction.tag, transaction.tag.id]
     run_sql(sql, values)
 
     # Select transactions with merchants

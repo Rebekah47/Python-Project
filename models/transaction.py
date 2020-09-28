@@ -1,8 +1,8 @@
 class Transaction:
-    def __init__(self, account_id, merchant_id, amount, date, tag_id, id = None):
-        self.account_id = account_id
-        self.merchant_id = merchant_id
+    def __init__(self, account, merchant, amount, date, tag, id = None):
+        self.account = account
+        self.merchant = merchant
         self.amount = amount
         self.date = date
-        self.tag_id = tag_id
+        self.tag = tag
         self.id = id

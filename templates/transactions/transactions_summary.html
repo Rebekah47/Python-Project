@@ -5,11 +5,18 @@
     {% for transaction in transactions %}
     
     Amount: £{{ transaction.amount }} <br>
-    Date:{{ transaction.date }} <br> <br>
+    Date:{{ transaction.date }} 
+    <form action="/transactions/{{ transaction.id }}/delete" method="POST">
+        <button type="submit" id='delete'><span> &#128465;</span></button>
+    </form>
+    <form action="/transactions/{{ transaction.id }}/edit" method="POST">
+        <button type="submit" id='edit'><span> &#9998; </span></button>
+    </form>
+    <br>
 
     {% endfor %}
     <br>
     <a href="/add_new_transaction">Add New Transaction</a>
-    <a href="/edit_transaction">Edit Transaction</a>
+    
 </main>
 {% endblock %}

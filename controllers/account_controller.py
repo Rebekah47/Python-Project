@@ -16,6 +16,7 @@ def account():
 def check_password():
     password = request.form["password"]
     if password == "hello":
-        return render_template("account/full_statment.html")
+        transactions = transaction_repository.select_all_transactions()
+        return render_template("account/full_statment.html", transactions=transactions)
     else:
         return render_template("account/password_not_a_match.html")

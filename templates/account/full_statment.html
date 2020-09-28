@@ -1,3 +1,42 @@
 {% extends "base.html" %}
 {% block content %}
+
+<h2> Full Statment </h2>
+
+<table style="width:70%">
+    <tr>
+        <th>Merchant</th>
+        <th>Location</th>
+        <th>Tag</th>
+        <th>Date</th>
+        <th>Amount</th>
+    </tr>
+    <tr>
+    {%  for transaction in transactions %}
+    <tr>
+        <td>{{ transaction.merchant.name }} </td>
+        <td>{{ transaction.merchant.location }} </td>
+        <td>{{ transaction.tag.name }} </td>
+        <td>{{ transaction.date }} </td>
+        <td>£{{ transaction.amount }} </td>
+        
+    </tr>
+    {% endfor %}
+    <tr></tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><b>Balance:</b></td>
+        <td></td>
+    </tr>
+
+
+</table>
+
+
+
+
+
+
 {% endblock %}

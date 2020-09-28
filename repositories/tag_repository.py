@@ -8,8 +8,8 @@ import repositories.merchant_repository as merchant_repository
 import repositories.transaction_repository as transaction_repository
 
 def save_tag(tag):
-    sql = "INSERT INTO tags (tag_name) VALUES (%s) RETURNING id"
-    values = [tag.tag_name]
+    sql = "INSERT INTO tags (name) VALUES (%s) RETURNING id"
+    values = [tag.name]
     results = run_sql(sql, values)
     id = results[0]['id']
     tag.id = id
@@ -21,7 +21,7 @@ def select_all_tag():
     sql = 'SELECT * FROM tags'
     results = run_sql(sql)
     for result in results:
-        tag = Tag(result['tag_name'], result["id"])
+        tag = Tag(result['name'], result["id"])
         tag_selected.append(tag)
     return tag_selected
 
@@ -30,7 +30,7 @@ def select_one_tag(id):
     sql = 'SELECT * FROM tags WHERE id = %s'
     values = [id]
     results = run_sql(sql, values)[0]
-    tag = Tag(results['tag_name'], results['id'])
+    tag = Tag(results['name'], results['id'])
     return tag
 
 # DELETE ALL
@@ -47,6 +47,6 @@ def delete_one_tag(id):
 # UPDATE
 
 def update_account(tag):
-    sql = 'UPDATE tags SET (tag_name) = (%s) WHERE id = %s'
-    values =  [tag.tag_name, tag.id]
+    sql = 'UPDATE tags SET (name) = (%s) WHERE id = %s'
+    values =  [tag.name, tag.id]
     run_sql(sql, values)
