@@ -1,11 +1,17 @@
-{% extends "base.html" %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Login to Account</title>
+</head>
+<body>
+    <h1 class="head_1">Money Tracker</h1>
 <main class="list_1">
     {% for account in accounts %}
-        Account User: {{ account.user_name }} <br>
-        Account Balance: {{ account.balance }} <br>
-        Account Transactions:  
-        <form action="/full_statment" method="POST">
+        Account User: {{ account.user_name }} <br> 
+        <form action="/navigation" method="POST">
         <label for="password">Password:</label>
         <input type="password" id="password" name="password">
         <input type="submit" value="Submit">
@@ -14,4 +20,6 @@
 
     {% endfor %}
 </main>
-{% endblock %}
+    
+</body>
+</html>

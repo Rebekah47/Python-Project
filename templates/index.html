@@ -1,6 +1,19 @@
-{% extends "base.html" %}
-{% block content %}
-<main>
-    Account
-</main>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Home Page</title>
+</head>
+<body>
+    <main>
+        <h1 class="head_1">Money Tracker</h1>
+
+        <h2 class="home">Hello! <br>
+        
+        Please <a href="/account">Login Here</a> To Start Tracking Your Spending</h2>
+        
+        </main>
+</body>
+</html>

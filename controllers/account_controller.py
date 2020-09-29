@@ -13,20 +13,18 @@ def account():
     accounts = account_repository.select_all_account()
     return render_template("account/account_home.html", accounts=accounts)
 
-@account_blueprint.route("/full_statment", methods=['POST']) 
+@account_blueprint.route("/navigation", methods=['POST']) 
 def check_password():
     password = request.form["password"]
     if password == "hello":
-        transactions = transaction_repository.select_all_transactions()
-        total_spent = Transaction.add_transaction_total(transactions)
-        return render_template("account/full_statment.html", transactions=transactions, total_spent=total_spent)
+        return render_template("account/navigation.html")
     else:
         return render_template("account/password_not_a_match.html")
 
-# @account_blueprint.route("/full_statment", methods=['POST'])
-# def add_transaction_total():
-#     transactions = transaction_repository.select_all_transactions()
-#     balance = 0
-#     for transaction in transactions:
-#         balance += transaction.amount
-#     return balance
+@account_blueprint.route("/full_statment")
+def navigation():
+    transactions = transaction_repository.select_all_transactions()
+    total_spent = Transaction.add_transaction_total(transactions)
+    account = transactions[0].account
+    new_balance = account.update_balance(total_spent)
+    return render_template("account/full_statment.html", transactions=transactions, total_spent=total_spent, account=account)

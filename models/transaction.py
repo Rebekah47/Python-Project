@@ -13,3 +13,4 @@ class Transaction:
         for transaction in transactions:
             total_spent += transaction.amount
         return total_spent
+

@@ -31,13 +31,13 @@ def create_transaction():
     tag = tag_repository.select_one_tag(tag_id)
     new_transaction = Transaction(account, merchant, amount, date, tag)
     transaction_repository.save_transaction(new_transaction)
-    return redirect('/transactions')
+    return redirect("/full_statment")
 
 @transactions_blueprint.route("/transactions/<id>/delete", methods=['POST'])
 def delete_transaction(id):
     print(id)
     transaction_repository.delete_one_transaction(id)
-    return redirect('/transactions')
+    return redirect("/full_statment")
 
 @transactions_blueprint.route("/transactions/<id>/edit")
 def edit_transaction(id):
@@ -59,7 +59,7 @@ def update_transaction(id):
     tag = tag_repository.select_one_tag(tag_id)
     edited_transaction = Transaction(account, merchant, amount, date, tag, id)
     transaction_repository.update_transaction(edited_transaction)
-    return redirect('/transactions')
+    return redirect("/full_statment")
 
 
 # @transactions_blueprint.route('/transactions')

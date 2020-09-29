@@ -21,8 +21,15 @@
         <td>{{ transaction.tag.name }} </td>
         <td>{{ transaction.date }} </td>
         <td>£{{ transaction.amount }} </td>
-        <td></td>
-        <td></td>
+        <td>    
+            <form action="/transactions/{{ transaction.id }}/edit" method="GET">
+                <button type="submit" id='edit'><span> &#9998; </span></button>
+            </form></td>
+        <td>
+            <form action="/transactions/{{ transaction.id }}/delete" method="POST">
+                <button type="submit" id='delete'><span> &#128465;</span></button>
+            </form>
+        </td>
         
     </tr>
     {% endfor %}
@@ -32,7 +39,7 @@
         <td></td>
         <td></td>
         <td class="total"><b>Total Spent:</b></td>
-        <td> {{ total_spent }}
+        <td> £{{ total_spent }}
         </td>
     </tr>
     <tr>
@@ -40,14 +47,15 @@
         <td></td>
         <td></td>
         <td class="total"><b>Balance:</b></td>
-        <td> </td>
+        <td> £{{ account.balance }}</td>
     </tr>
 
 
 </table>
 
-
-
+<form action="/add_new_transaction" id="add_new">
+    Add New Transaction <button type="submit" id='add_new'><span> &#10133; </span></button>
+</form>
 
 
 

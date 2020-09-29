@@ -3,11 +3,14 @@
 
 <main>
     <h2 class="head_1">Tag List</h2>
-    {% for tag in tags %}
+    <div class="tags">{% for tag in tags %} <br>
 
     {{ tag.name}} <br>
 
     {% endfor %}
+    </div>
+    <br>
+    <br>
     <section>
         <form action="/add_new_tag" method="POST">
             <label for="new_tag">Tag Name:</label>
@@ -16,5 +19,4 @@
         </form>
     </section>
 </main>
-
 {% endblock %}

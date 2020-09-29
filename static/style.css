@@ -1,6 +1,26 @@
 body {
-    background-color: lightpink;
+    background-color: lightblue;
     font-family: 'Inconsolata', monospace;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body > ul {
+    display: flex;
+    float: left;
+    align-items: flex-start;
+    list-style: none;
+}
+
+body > ul > li {
+    padding: 5px;
+}
+
+.home {
+    background: lightblue;
+    font-family: 'Inconsolata', monospace;
+
 }
 
 .table {
@@ -10,8 +30,6 @@ body {
     border: 2px solid darkblue;
     background-color: whitesmoke;
     text-align: left;
-    
-    
 
 }
 
@@ -19,8 +37,26 @@ body {
     text-align: center;
     border: 2px solid darkblue;
     background-color: whitesmoke;
+    padding: 5px;
 }
 
 .total {
     text-align: right;
+}
+
+#add_new {
+    text-align: center;
+    text-decoration: darkgreen;
+}
+
+.list {
+   align-items: baseline;
+}
+
+.tags {
+    text-align: center;
+}
+
+.nav {
+    display:flex;
 }

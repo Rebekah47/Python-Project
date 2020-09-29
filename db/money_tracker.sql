@@ -27,5 +27,5 @@ CREATE TABLE transactions (
     merchant_id INT REFERENCES merchants(id),
     tag_id INT REFERENCES tags(id),
     amount FLOAT,
-    date VARCHAR(255)
+    date DATE
 );
