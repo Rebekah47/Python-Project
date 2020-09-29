@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <main>
-    <h2>Transaction List:</h2>
+    <h2 class="head_1">Transaction List:</h2>
     {% for transaction in transactions %}
     
     Amount: £{{ transaction.amount }} <br>
@@ -9,7 +9,7 @@
     <form action="/transactions/{{ transaction.id }}/delete" method="POST">
         <button type="submit" id='delete'><span> &#128465;</span></button>
     </form>
-    <form action="/transactions/{{ transaction.id }}/edit" method="POST">
+    <form action="/transactions/{{ transaction.id }}/edit" method="GET">
         <button type="submit" id='edit'><span> &#9998; </span></button>
     </form>
     <br>

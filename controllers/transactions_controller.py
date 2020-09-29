@@ -39,7 +39,7 @@ def delete_transaction(id):
     transaction_repository.delete_one_transaction(id)
     return redirect('/transactions')
 
-@transactions_blueprint.route("/transactions/<id>/edit", methods=['POST'])
+@transactions_blueprint.route("/transactions/<id>/edit")
 def edit_transaction(id):
     transaction = transaction_repository.select_one_transaction(id)
     accounts = account_repository.select_all_account()
@@ -47,21 +47,19 @@ def edit_transaction(id):
     tags = tag_repository.select_all_tag()
     return render_template('transactions/edit_transaction.html', transaction=transaction, accounts=accounts, merchants=merchants, tags=tags)
 
-# @transactions_blueprint.route("/transactions/<id>/edit", methods=['POST'])
-# def update_transaction():
-#     account_id = request.form["account_name"]
-#     account = account_repository.select_one_account(account_id)
-#     merchant_id = request.form["merchant_name"]
-#     merchant = merchant_repository.select_one_merchant(merchant_id)
-#     amount = request.form["amount"]
-#     date = request.form["date"]
-#     tag_id = request.form["tag"]
-#     tag = tag_repository.select_one_tag(tag_id)
-#     edited_transaction = Transaction(account, merchant, amount, date, tag)
-#     transaction_repository.save_transaction(edited_transaction)
-#     return redirect('/transactions')
-
-
+@transactions_blueprint.route("/transactions/<id>", methods=['POST'])
+def update_transaction(id):
+    account_id = request.form["account_id"]
+    account = account_repository.select_one_account(account_id)
+    merchant_id = request.form["merchant_id"]
+    merchant = merchant_repository.select_one_merchant(merchant_id)
+    amount = request.form["amount"]
+    date = request.form["date"]
+    tag_id = request.form["tag_id"]
+    tag = tag_repository.select_one_tag(tag_id)
+    edited_transaction = Transaction(account, merchant, amount, date, tag, id)
+    transaction_repository.update_transaction(edited_transaction)
+    return redirect('/transactions')
 
 
 # @transactions_blueprint.route('/transactions')

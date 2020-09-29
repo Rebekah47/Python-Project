@@ -50,3 +50,6 @@ def update_account(account):
     sql = 'UPDATE accounts SET (user_name, balance, transaction_summary) = (%s, %s, %s) WHERE id = %s'
     values = [account.user_name, account.balance, account.transaction_summary, account.id]
     run_sql(sql, values)
+
+# def update_balance(amount):
+#     amount = transaction_repository.add_transaction_total()

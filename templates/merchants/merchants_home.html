@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<main>
+<main class="list">
     <h2>Current Merchants Available</h2>
     {% for merchant in merchants %}
         Merchant Name: {{ merchant.name }}, {{ merchant.location }} <br>

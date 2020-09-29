@@ -17,3 +17,10 @@ def main():
 
 if __name__ == '__main__':
     app.run()
+
+
+# <!-- {% add_transaction_total %}
+# {% for  transaction in transactions %}
+#     {% amount += transaction.amount %}
+#     £{{ amount }}
+# {% endfor %} -->

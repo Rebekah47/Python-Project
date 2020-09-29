@@ -2,44 +2,47 @@
 {% block content %}
         
    
-    <section>
+    <section class="list">
 
-        <form action="/edit_transaction" method="POST">
-        <label for="account_name">Account Holder:</label>
-        <select name="account_name" id="account_name">
-            <optgroup label="Account Holder">
-                {% for account in accounts %}
-                <option value="{{ account.id }}">
-                    {{ account.user_name }}
-                </option>
-                {% endfor %}
-            </optgroup> <br>
-        </select>
-        <label for="merchant_name">Merchant:</label>
-        <select name="merchant_name" id="merchant_name">
-            <optgroup label="Merchants">
-                {% for merchant in merchants %}
-                <option value="{{ merchant.id }}">
-                    {{ merchant.name }}
-                </option>
-                {% endfor %}
-            </optgroup> <br>
-        </select>
-        <label for="amount">Transaction Amount:</label>
-        <input type="float" id="amount" name="amount">
-        <label for="date">Transaction Date:</label>
-        <input type="date" id="date" name="date">
-        <label for="tag">Tag:</label>
-        <select name="tag" id="tag">
-            <optgroup label="Tags">
-                {% for tag in tags %}
-                <option value="{{ tag.id }}">
-                    {{ tag.name }}
-                </option>
-                {% endfor %}
-            </optgroup> <br>
-        </select>
-        <input type="submit" value="Add New Transaction">
+        <form action="/transactions/{{ transaction.id }}" method="POST">
+            <label for="account_id">Account Holder:</label>
+            <select name="account_id" id="account_id">
+                <optgroup label="Account Holder">
+                    {% for account in accounts %}
+                    <option value="{{ account.id }}"
+                        {% if account.id == transaction.account.id %} selected=selected {% endif %}>
+                        {{ account.user_name }}
+                    </option>
+                    {% endfor %}
+                </optgroup> <br>
+            </select>
+            <label for="merchant_id">Merchant:</label>
+            <select name="merchant_id" id="merchant_id">
+                <optgroup label="Merchants">
+                    {% for merchant in merchants %}
+                    <option value="{{ merchant.id }}"
+                    {% if merchant.id == transaction.merchant.id %} selected=selected {% endif %}>
+                        {{ merchant.name }}
+                    </option>
+                    {% endfor %}
+                </optgroup> <br>
+            </select>
+            <label for="amount">Transaction Amount:</label>
+            <input type="float" id="amount" name="amount" value="{{ transaction.amount }}">
+            <label for="date">Transaction Date:</label>
+            <input type="date" id="date" name="date">
+            <label for="tag_id">Tag:</label>
+            <select name="tag_id" id="tag_id">
+                <optgroup label="Tags">
+                    {% for tag in tags %}
+                    <option value="{{ tag.id }}"
+                    {% if tag.id == transaction.tag.id %} selected=selected {% endif %}>
+                        {{ tag.name }}
+                    </option>
+                    {% endfor %}
+                </optgroup> <br>
+            </select>
+            <input type="submit" value="Edit Transaction">
         </form>
     </section>
 

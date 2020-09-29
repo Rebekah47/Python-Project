@@ -1,15 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2> Full Statment </h2>
+<h2 class="head_1"> Full Statment </h2>
 
-<table style="width:70%">
+<table class="table">
     <tr>
         <th>Merchant</th>
         <th>Location</th>
         <th>Tag</th>
         <th>Date</th>
         <th>Amount</th>
+        <th>Edit</th>
+        <th>Delete</th>
     </tr>
     <tr>
     {%  for transaction in transactions %}
@@ -19,6 +21,8 @@
         <td>{{ transaction.tag.name }} </td>
         <td>{{ transaction.date }} </td>
         <td>£{{ transaction.amount }} </td>
+        <td></td>
+        <td></td>
         
     </tr>
     {% endfor %}
@@ -27,8 +31,16 @@
         <td></td>
         <td></td>
         <td></td>
-        <td><b>Balance:</b></td>
+        <td class="total"><b>Total Spent:</b></td>
+        <td> {{ total_spent }}
+        </td>
+    </tr>
+    <tr>
         <td></td>
+        <td></td>
+        <td></td>
+        <td class="total"><b>Balance:</b></td>
+        <td> </td>
     </tr>
 
 

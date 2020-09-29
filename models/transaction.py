@@ -6,3 +6,10 @@ class Transaction:
         self.date = date
         self.tag = tag
         self.id = id
+    
+    @classmethod
+    def add_transaction_total(cls, transactions):
+        total_spent = 0
+        for transaction in transactions:
+            total_spent += transaction.amount
+        return total_spent
