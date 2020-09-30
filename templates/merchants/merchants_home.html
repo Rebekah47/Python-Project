@@ -3,7 +3,11 @@
 <main class="list">
     <h2 class="head_1">Current Merchants Available</h2>
     {% for merchant in merchants %}
-        Merchant: {{ merchant.name }}, {{ merchant.location }} <br><br>
+        Merchant: {{ merchant.name }}, {{ merchant.location }}             
+        <form action="/merchant/{{ merchant.id }}/edit " methods="GET">
+            <button type="submit" id='edit_merchant'>Edit Merchant</button>
+        </form>
+        <br>
 
     {% endfor %}
 
@@ -16,7 +20,6 @@
                 <label for="location">Location:</label>
                 <input type="location" name="location" id="location"> <br>
                 <input type="submit" value="Add New Merchant">
-                
             </form>
         </section>
 

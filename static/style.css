@@ -60,3 +60,8 @@ body > ul > li {
 .nav {
     display:flex;
 }
+
+.logo {
+    display: flex;
+    flex-direction: inherit;
+}

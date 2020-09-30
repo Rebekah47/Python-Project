@@ -47,7 +47,7 @@ def delete_one_merchant(id):
 
 # UPDATE
 
-def update_account(merchant):
+def update_merchant(merchant):
     sql = 'UPDATE merchants SET (name, location) = (%s, %s) WHERE id = %s'
     values =  [merchant.name, merchant.location, merchant.id]
     run_sql(sql, values)

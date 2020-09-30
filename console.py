@@ -12,7 +12,7 @@ import repositories.tag_repository as tag_repository
 from models.transaction import Transaction
 import repositories.transaction_repository as transaction_repository
 
-account_1 = Account("Adam", 450.60)
+account_1 = Account("Adam", 450)
 account_repository.save_account(account_1)
 
 merchant_1 = Merchant("Morrisons", "Edinburgh")

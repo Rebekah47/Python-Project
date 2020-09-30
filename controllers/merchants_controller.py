@@ -21,3 +21,16 @@ def add_merchant():
     return redirect("/merchants")
 
 # def edit_merchant():
+@merchants_blueprint.route("/merchant/<id>/edit")
+def edit_merchant(id):
+    merchants = merchant_repository.select_all_merchants()
+    merchant = merchant_repository.select_one_merchant(id)
+    return render_template('merchants/edit_merchants.html', merchant=merchant, merchants=merchants)
+
+@merchants_blueprint.route("/merchants/<id>", methods=["POST"])
+def update_merchant(id):
+    name = request.form["name"]
+    location = request.form["location"]
+    edited_merchant = Merchant(name, location, id)
+    merchant_repository.update_merchant(edited_merchant)
+    return redirect("/merchants")
